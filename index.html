@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loomguard - Asset Protection Company</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 10 L90 30 V70 L50 90 L10 70 V30 Z' fill='%231a365d'/></svg>" type="image/svg+xml">
+    <style>
+        /* The rest of the CSS remains the same as in the previous version */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            background-color: #f0f4f8; 
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(240, 244, 248, 0.9);
+            z-index: -1;
+        }
+        
+        /* Header styles */
+        header { 
+            background-color: rgba(26, 54, 93, 0.9); 
+            color: white; 
+            padding: 1rem 0; 
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: bold; color: #4fd1c5; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .nav-links { display: flex; }
+        .nav-links a { color: white; text-decoration: none; padding: 0 1rem; font-weight: 300; transition: color 0.3s ease; }
+        .nav-links a:hover { color: #4fd1c5; }
+        
+        /* Hero section */
+        .hero { 
+            background-color: rgba(44, 82, 130, 0.8); 
+            color: white; 
+            padding: 4rem 2rem; 
+            text-align: center; 
+        }
+        .hero-content { max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero p { font-size: 1.4rem; margin-bottom: 2rem; font-weight: 300; }
+        .cta-button { display: inline-block; background-color: #4fd1c5; color: #1a365d; padding: 1rem 2.5rem; text-decoration: none; border-radius: 50px; font-weight: bold; transition: all 0.3s ease; }
+        .cta-button:hover { background-color: #38b2ac; transform: translateY(-3px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        /* Section styles */
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h2 { font-size: 2.8rem; margin-bottom: 2rem; text-align: center; color: #2c5282; }
+        
+        /* About section */
+        .about-content { background-color: rgba(255, 255, 255, 0.9); padding: 3rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .about-text h3 { font-size: 2rem; color: #2c5282; margin-bottom: 1rem; }
+        .about-text p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .about-text ul { list-style-type: none; margin-bottom: 1.5rem; }
+        .about-text li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+        .about-text li:before { content: "\f00c"; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: #4fd1c5; position: absolute; left: 0; }
+        
+        /* Services section */
+        .services { background-color: rgba(230, 240, 255, 0.8); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .service-card { background-color: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        .service-card i { font-size: 3rem; color: #4fd1c5; margin-bottom: 1rem; }
+        .service-card h3 { color: #2c5282; font-size: 1.5rem; margin-bottom: 1rem; }
+        .service-card p { font-size: 1rem; }
+        
+        /* Contact form */
+        .contact-form { max-width: 600px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.9); padding: 3rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #2c5282; font-weight: bold; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #cbd5e0; border-radius: 5px; font-size: 1rem; transition: border-color 0.3s ease; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #4fd1c5; }
+        .form-group textarea { height: 150px; }
+        .submit-button { background-color: #4fd1c5; color: white; padding: 1rem 2rem; border: none; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: all 0.3s ease; }
+        .submit-button:hover { background-color: #38b2ac; transform: translateY(-3px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        /* Footer */
+        footer { background-color: rgba(26, 54, 93, 0.9); color: white; text-align: center; padding: 2rem 0; }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            section { padding: 3rem 1rem; }
+            .about-content, .contact-form { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- The rest of the HTML body remains the same as in the previous version -->
+    <header>
+        <nav>
+            <div class="logo">Loomguard</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Fortify Your Future with Loomguard</h1>
+            <p>Innovative solutions for comprehensive asset protection in an ever-changing world</p>
+            <a href="#contact" class="cta-button">Secure Your Assets Now</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Loomguard</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>At Loomguard, we're on a relentless mission to safeguard your valuable assets through cutting-edge protection strategies and an unwavering dedication to security. In today's complex financial landscape, we understand that your assets are more than just numbers on a balance sheet - they represent your hard work, your future, and your legacy.</p>
+                    <p>Our team of expert strategists, legal professionals, and technology specialists work tirelessly to create robust, tailored protection plans that shield your assets from potential threats, legal challenges, and unforeseen circumstances.</p>
+                    <h3>Why Choose Loomguard</h3>
+                    <ul>
+                        <li>Industry-leading expertise with a proven track record of success</li>
+                        <li>Customized protection plans tailored to your unique asset portfolio</li>
+                        <li>24/7 monitoring and support to ensure continuous protection</li>
+                        <li>State-of-the-art technology integration for enhanced security measures</li>
+                        <li>Comprehensive risk assessment and mitigation strategies</li>
+                        <li>Ongoing adaptation to evolving legal and financial landscapes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Comprehensive Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Physical Asset Protection</h3>
+                    <p>Our physical asset protection services offer comprehensive security measures to safeguard your tangible assets from theft, damage, and unauthorized access. We employ advanced surveillance systems, access control protocols, and strategic risk management to ensure the safety of your valuable possessions.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Digital Asset Protection</h3>
+                    <p>In the digital age, your online assets are as crucial as physical ones. Our cutting-edge cybersecurity solutions protect your digital assets, intellectual property, and sensitive data from cyber threats, hacking attempts, and data breaches. We implement robust firewalls, encryption protocols, and continuous monitoring to keep your digital world secure.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Legal Asset Protection</h3>
+                    <p>Navigate the complex world of asset protection law with our expert guidance. We provide strategic advice on legal structures and strategies to shield your assets from potential liabilities and claims. Our team stays abreast of the latest legal developments to ensure your asset protection plan remains effective and compliant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="How can we help protect your assets?"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Loomguard. All rights reserved. | Protecting Your Assets, Securing Your Future</p>
+    </footer>
+</body>
+</html>
